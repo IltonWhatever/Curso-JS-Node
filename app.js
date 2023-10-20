@@ -1,19 +1,21 @@
-// Importando o express.
+// Configs da aplicação
 var express = require('express');
 var app = express();
-
-// Setando o express para usar a engine de view do EJS
 app.set('view engine', 'ejs');
 
-// Rota padrão
+// Rota Home
 app.get('/', function(request, response){
-    response.send("<html><body> <h1> Pagina Inicial </h1> </body></html>");
+    response.render('home/index')
 });
 
-// Rota teste usando Modulos
-app.get('/teste', function(request, response){
-    // Usando render para rederizar a pagina html por meio do arquivo .EJS
-    response.render("secao/teste");
+// Rota Inclusão de noticias formulario
+app.get('/formulario_inclusao_noticia', function(request, response){
+    response.render('admin/form_add_noticia')
+});
+
+// Rota Noticias
+app.get('/noticias', function(request, response){
+    response.render('noticias/noticias')
 });
 
 // Usando a propriedade listen para ouvir na porta desejada
