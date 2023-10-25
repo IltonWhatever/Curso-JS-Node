@@ -9,14 +9,14 @@ module.exports = function(app){
             database: 'portal_noticias'
         });
 
+        // Consulta e armazena os resultados dos selects, em caso de erro armazena o erro em 'error'
         connection.query('select * from noticias', function(error, result){
             if(error){
-                console.log(error)
+                console.log(error);
             }else {
-                response.send(result);
+                response.render('noticias/noticias', {noticias: result});
             }
         });
 
-        //response.render('noticias/noticias');
     });
 };
