@@ -1,0 +1,10 @@
+npm install
+npm install express --save
+npm install ejs --save
+npm install -g nodemon
+
+//  Encontra-se com problemas de conexão
+// https://stackoverflow.com/questions/50093144/mysql-8-0-client-does-not-support-authentication-protocol-requested-by-server
+npm install mysql --save
+// Solução é usar o pacote 'mysql2'.
+npm install mysql2 --save
