@@ -1,9 +1,4 @@
-// Configs da aplicação
-var express = require('express');
-// Recuperando o modulo personalizado MSG
-var msg = require('./moduloteste');
-var app = express();
-app.set('view engine', 'ejs');
+app = require('./config/server');
 
 // Rota Home
 app.get('/', function(request, response){
@@ -23,5 +18,4 @@ app.get('/noticias', function(request, response){
 // Usando a propriedade listen para ouvir na porta desejada
 app.listen(3000, function(){
     console.log('Servidor rodando com Express na porta 3000')
-    console.log(msg()) // Executando a função retornada pelo Modulo, pode ser feito na propria importação do modulo
 });
