@@ -1,6 +1,8 @@
 npm install
 npm install express --save
 npm install ejs --save
+
+// Usado para criação mais dinamica, ele detecta automaticamente mudanças no codigo e renicia o servidor
 npm install -g nodemon
 
 //  Encontra-se com problemas de conexão
@@ -8,3 +10,6 @@ npm install -g nodemon
 npm install mysql --save
 // Solução é usar o pacote 'mysql2'.
 npm install mysql2 --save
+
+// Usado para importa todas as rotas automaticamente no app.js
+npm install consign --save
