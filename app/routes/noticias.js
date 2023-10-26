@@ -1,18 +1,17 @@
 // let dbConnection = require('../../config/dbConnection');
-module.exports = function(app){    
+module.exports = function(application){    
     // Rota Noticias
-    app.get('/noticias', function(request, response){
+    application.get('/noticias', function(request, response){
 
-        let connection = app.config.dbConnection(); // Referencia que recupera a conexão com o BD
+        let connection = application.config.dbConnection(); // Referencia que recupera a conexão com o BD
+        let noticiasModel = application.app.models.noticiasModel; // Acessando modulos que foram carregados em APP pelo Consign
 
-        // Consulta e armazena os resultados dos selects, em caso de erro armazena o erro em 'error'
-        connection.query('select * from noticias', function(error, result){
+        noticiasModel.getNoticias(connection, function(error, result){
             if(error){
                 console.log(error);
             }else {
                 response.render('noticias/noticias', {noticias: result});
             }
         });
-
     });
 };

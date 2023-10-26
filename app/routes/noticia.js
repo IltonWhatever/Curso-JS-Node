@@ -1,10 +1,11 @@
-module.exports = function(app){    
-    app.get('/noticia', function(request, response){
+module.exports = function(application){    
+    application.get('/noticia', function(request, response){
 
-        let connection = app.config.dbConnection(); // Referencia que recupera a conexão com o BD
+        let connection = application.config.dbConnection(); // Referencia que recupera a conexão com o BD
+        let noticiasModel = application.app.models.noticiasModel; // Recuperando o modulo Get e instancioando na variavel
 
-        
-        connection.query('select * from noticias where id_noticia = 2', function(error, result){
+        // Com a variavel instanciada, recuperamos o modulo getNoticia
+        noticiasModel.getNoticia(connection, function(error, result){
             if(error){
                 console.log(error);
             }else {

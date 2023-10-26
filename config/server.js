@@ -9,6 +9,7 @@ app.set('views', './app/views'); // Apotando o diretorio padrão das views
 consign()
     .include('app/routes') // Pasta das rotas
     .then('config/dbConnection.js') // Necessario colocar a extensão para especificar o modulo exato
+    .then('app/models') // Carrega os models
     .into(app); // Reconhece as rotas modulos da pasta rotas e envia para APP automatizando a importação de rotas
 
 
