@@ -8,6 +8,6 @@ module.exports = function(app){
     // Rota POST que recebe o formulario.
     app.post('/noticias/salvar', function(request, response){
         let noticias = request.body;
-        response.send('Pagina Teste');
+        response.send(noticias);
     });
 }

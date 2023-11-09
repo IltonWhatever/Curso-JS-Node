@@ -14,5 +14,5 @@ npm install mysql2 --save
 // Usado para importa todas as rotas automaticamente no app.js
 npm install consign --save
 
-// Modulo usado para criar um body usando dados no html
+// Modulo middleware para formulario
 npm install body-parser --save

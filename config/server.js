@@ -1,10 +1,13 @@
-var express = require('express');
-var consign = require('consign');
+let express = require('express');
+let consign = require('consign');
+let bodyParser = require('body-parser');
 
-var app = express();
+let app = express();
 
 app.set('view engine', 'ejs'); // Config para setar o uso da rederização pelo EJS para o express
 app.set('views', './app/views'); // Apotando o diretorio padrão das views
+
+app.use(bodyParser.urlencoded({extended:true})); // Middleware
 
 consign()
     .include('app/routes') // Pasta das rotas
