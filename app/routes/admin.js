@@ -16,11 +16,12 @@ module.exports = function(application){
         request.assert('autor','Autor é obrigatorio').notEmpty();
         request.assert('data_noticia','Autor é obrigatorio').notEmpty().isDate({format: 'YYYY-MM-DD'});
         request.assert('noticia','Noticia é obrigatorio').notEmpty();
-        // Verificando se houve algum erro
+
+        // Armazenando os erros do validator para variavel
         const erros = request.validationErrors();
         
         if(erros){
-            response.render('admin/form_add_noticia');
+            response.render('admin/form_add_noticia', {validacao: erros});
             return;
         }
 
