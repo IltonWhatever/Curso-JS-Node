@@ -10,10 +10,10 @@ module.exports = function(application){
         let noticia = request.body; // Variavel contendo o JSON da noticia feita no formulario.
 
         let connection = application.config.dbConnection(); // Referencia que recupera a conexão com o BD
-        let noticiasModel = application.app.models.noticiasModel; // Recuperando o modulo Get e instancioando na variavel
+        let noticiasModel = new application.app.models.NoticiasDAO(connection); // Recuperando o modulo Get e instancioando na variavel
 
         // Com a variavel instanciada, recuperamos o modulo getNoticia
-        noticiasModel.salvarNoticia(noticia, connection, function(error, result){
+        noticiasModel.salvarNoticia(noticia, function(error, result){
             if(error){
                 console.log(error);
             }else {
