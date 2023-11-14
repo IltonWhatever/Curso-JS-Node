@@ -16,3 +16,6 @@ npm install consign --save
 
 // Modulo middleware para formulario
 npm install body-parser --save
+
+// Validador Express // Teremos que usar essa versão pois as novas usam uma nova sintaxe
+npm install express-validator@5.3.0 --save
