@@ -28,5 +28,5 @@ mysql -u -root -p
 criar arquivo no disco c raiz com esse texto: ALTER USER 'root'@'localhost' IDENTIFIED BY 'root' 
 com o nome: mysql-init.txt
 para o serviço do mysql
-executar com cmd usando adm: mysql --defaults-file="C:\\ProgramData\\MySQL\MySQL Server 8.1\\my.ini" -- init-file-c:\\mysql-init.txt
+executar com cmd usando adm: mysqld --defaults-file="C:\\ProgramData\\MySQL\MySQL Server 8.1\\my.ini" -- init-file-c:\\mysql-init.txt --console
 inicie o serviço do mysql

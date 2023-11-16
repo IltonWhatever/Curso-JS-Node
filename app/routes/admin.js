@@ -1,14 +1,11 @@
-module.exports = function(application){
-    
+module.exports = function(application){  
     // Rota Inclusão de noticias formulario.
     application.get('/formulario_inclusao_noticia', function(request, response){
-        response.render('admin/form_add_noticia')
+        response.render('admin/form_add_noticia', {validacao:{}, noticia:{}});
     });
-
     // Rota POST que recebe o formulario.
     application.post('/noticias/salvar', function(request, response){
         let noticia = request.body; // Variavel contendo o JSON da noticia feita no formulario.
-
         // Express-Validator - Os codigos a seguir servem para validar os dados dos formularios.
         request.assert('titulo','Titulo é obrigatorio').notEmpty();
         request.assert('resumo','Resumo é obrigatorio').notEmpty();
@@ -17,11 +14,10 @@ module.exports = function(application){
         request.assert('data_noticia','Autor é obrigatorio').notEmpty().isDate({format: 'YYYY-MM-DD'});
         request.assert('noticia','Noticia é obrigatorio').notEmpty();
 
-        // Armazenando os erros do validator para variavel
-        const erros = request.validationErrors();
+        const erros = request.validationErrors(); // Armazenando os erros do validator para variavel
         
         if(erros){
-            response.render('admin/form_add_noticia', {validacao: erros});
+            response.render('admin/form_add_noticia', {validacao: erros, noticia: noticia},);
             return;
         }
 
