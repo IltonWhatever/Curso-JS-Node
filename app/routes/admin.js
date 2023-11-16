@@ -1,37 +1,13 @@
+// Modulos somente para uso de Rotas
+
 module.exports = function(application){  
     // Rota Inclusão de noticias formulario.
     application.get('/formulario_inclusao_noticia', function(request, response){
-        response.render('admin/form_add_noticia', {validacao:{}, noticia:{}});
+        application.app.controllers.admin.formulario_inclusao_noticia(application, request, response);
     });
+
     // Rota POST que recebe o formulario.
     application.post('/noticias/salvar', function(request, response){
-        let noticia = request.body; // Variavel contendo o JSON da noticia feita no formulario.
-        // Express-Validator - Os codigos a seguir servem para validar os dados dos formularios.
-        request.assert('titulo','Titulo é obrigatorio').notEmpty();
-        request.assert('resumo','Resumo é obrigatorio').notEmpty();
-        request.assert('resumo','Resumo deve conter ao minimo 10 caracteres e no maximo 100').len(10, 100);
-        request.assert('autor','Autor é obrigatorio').notEmpty();
-        request.assert('data_noticia','Autor é obrigatorio').notEmpty().isDate({format: 'YYYY-MM-DD'});
-        request.assert('noticia','Noticia é obrigatorio').notEmpty();
-
-        const erros = request.validationErrors(); // Armazenando os erros do validator para variavel
-        
-        if(erros){
-            response.render('admin/form_add_noticia', {validacao: erros, noticia: noticia},);
-            return;
-        }
-
-
-        let connection = application.config.dbConnection(); // Referencia que recupera a conexão com o BD
-        let noticiasModel = new application.app.models.NoticiasDAO(connection); // Recuperando o modulo Get e instancioando na variavel
-
-        // Com a variavel instanciada, recuperamos o modulo getNoticia
-        noticiasModel.salvarNoticia(noticia, function(error, result){
-            if(error){
-                console.log(error);
-            }else {
-                response.redirect('/noticias');
-            }
-        });
+        application.app.controllers.admin.noticias_salvar(application, request, response);
     });
 }
