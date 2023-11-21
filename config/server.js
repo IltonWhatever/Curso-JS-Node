@@ -11,6 +11,7 @@ app.set('views', './app/views'); // Apotando o diretorio padrão das views
 // Middleware
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(expressValidator());
+app.use(express.static('./app/public'));
 
 consign()
     .include('app/routes') // Pasta das rotas
