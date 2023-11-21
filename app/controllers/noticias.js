@@ -16,8 +16,9 @@ module.exports.noticias = function(application, request, response){
 module.exports.noticia = function(application, request, response){
     const connection = application.config.dbConnection();
     const noticiasModel = new application.app.models.NoticiasDAO(connection);
+    const id_noticia = request.query // Recebe os parametros da url, ou seja tudo depois do "?" na url
 
-    noticiasModel.getNoticia(function(error, result){
+    noticiasModel.getNoticia(id_noticia, function(error, result){
         if(error){
             console.log(error);
         }else {
