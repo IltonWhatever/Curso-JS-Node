@@ -15,6 +15,10 @@ NoticiasDAO.prototype.salvarNoticia = function(noticia, callback){
                                             // No interroga ele transforma o json em String
 }
 
+NoticiasDAO.prototype.get5UltimasNoticias = function(callback){
+    this._connection.query('select * from noticias order by data_criacao desc limit 5', callback);
+}
+
 module.exports = function(){
     return NoticiasDAO;
 }
